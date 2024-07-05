@@ -1,0 +1,47 @@
+---
+import flattenAttributes from '../../utils/flattenAttributes';
+import Slider  from "../../components/Slider/Type1.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return [
+    {params: {slug: 'travel'}},
+  ];
+}
+
+const {slug} =  Astro.params;
+const response = await fetch(`${import.meta.env.HOST_API}/landing-pages?filters[slug]=${slug}&populate[content][populate]=*`).then(x  => x.json());
+const page = flattenAttributes(response.data[0]);
+---
+
+<BaseLayout title={page.title}>
+    <div class="container">
+        <div class="mpp-landing-page">
+            <span>1</span>
+            {
+                page?.content?.map( block => 
+
+                    block.__component === "ui-slider.slider" && <Slider banners={block.banners}  />
+                )
+            }
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+</BaseLayout>
+
+
+<style lang="scss" is:global>
+    .mpp-landing-page {
+        & :is(ul, li) {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        & :is(h1, h2, h3, h4) {
+            margin: 0;
+            padding: 0;
+        }
+    }
+</style>
+

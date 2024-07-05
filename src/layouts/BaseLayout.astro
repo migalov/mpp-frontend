@@ -1,0 +1,51 @@
+---
+const { title } = Astro.props;
+import "../styles/32a48453ca1f33fb83fedabd7ea361ea.css";
+// import "../styles/splide.min.css";
+// import "../utils/splide.min.js";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+        <meta charset="UTF-8">
+		<title>{title}</title>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+    :root {
+        --primaryColor: #f3704e;
+        --secondColor: #f0f0f0;
+        --violetColor: #9747ff;
+        --orangeSecondColor: #f79767;
+        --elecPink: #ff3596;
+        --blackColor: #000;
+        --whiteColor: #fff;
+        --lavandaColor: #e7e2f6;
+        --greenColor: #deefea;
+    }
+    html, body {
+        margin: 0;
+        padding: 0;
+        font-family: "Montserrat", sans-serif;
+    }
+    .container {
+        margin: 0 auto;
+        padding: 0 2rem;
+        max-width: 1270px;
+    }
+    img {
+        max-width: 100%;
+    }
+</style>
+
+

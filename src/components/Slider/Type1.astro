@@ -1,0 +1,106 @@
+---
+const { banners } = Astro.props;
+---
+
+<!-- <ul class="mpp-landing-page-slider-1">
+    {
+        banners.map((banner, index) => 
+            <li>
+                
+                <img src={banner.src} />
+                <div class="mpp-landing-page-slider-1__content">
+                    {
+                        index === 0 && <h1>{banner.title}</h1>
+                    }
+                    {
+                        index > 0 && <h2>{banner.title}</h2>
+                    }
+                </div>
+            </li>
+        )
+    }
+</ul> -->
+
+<section id="image-carousel" class="mpp-landing-page-slider-1 splide" aria-label="Beautiful Images">
+    <div class="splide__track">
+          <ul class="splide__list">
+            {
+                banners.map((banner, index) => 
+                    <li class="mpp-landing-page-slider-1__slide  splide__slide">
+                        <img src={banner.src} alt="" />
+                        <div class="mpp-landing-page-slider-1__content">
+                            {
+                                index === 0 && <h1>{banner.title}</h1>
+                            }
+                            {
+                                index > 0 && <h2>{banner.title}</h2>
+                            }
+                        </div>
+                    </li>
+                )
+            }
+          </ul>
+    </div>
+  </section>
+
+<style lang="scss">
+    .mpp-landing-page-slider-1 {
+        & img {
+            display: block;
+            object-fit: cover;
+            object-position: center right;
+            min-height: 350px;
+        }
+        & :is(h1, h2) {
+            color: var(--whiteColor);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        & h1 {
+            font-size: clamp(0.875rem, 0.613rem + 1.117vw, 1.5rem);
+        }
+    }
+    .mpp-landing-page-slider-1__slide {
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+    }
+    .mpp-landing-page-slider-1__content {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 5rem;
+        right: 5rem;
+        
+    }
+</style>
+
+<script>
+    const mainSliderDesktop = new Splide('.splide', {
+        type: 'fade',
+        rewind: true,
+        arrows: false,
+        autoplay: true,
+        interval: 4000,
+        pauseOnHover: false,
+        lazyLoad: 'nearby'
+    }).mount();
+
+    // const mainSliderMobile = new Splide('.mpp-main-slider-mobile', {
+    //     type: 'fade',
+    //     rewind: true,
+    //     arrows: false,
+    //     autoplay: true,
+    //     interval: 4000,
+    //     pauseOnHover: false,
+    //     lazyLoad: 'nearby',
+    //     mediaQuery: 'min',
+    //     preloadPages: 1,
+    //     breakpoints: {
+    //         768: {
+    //             destroy: true,
+    //         },
+    //     }
+    // }).mount();
+</script>
