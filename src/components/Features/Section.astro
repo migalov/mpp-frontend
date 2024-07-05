@@ -1,0 +1,37 @@
+---
+const { title, features } = Astro.props;
+import Feature from "./Item.astro";
+---
+
+<section class="mpp-features">
+    <div class="container">
+        <h2>{title}</h2>
+        <ul class="mpp-features-list">
+            {
+                features?.map( feature => <Feature {...feature} />)
+            }
+        </ul>
+    </div>
+</section>
+
+<style lang="scss">
+    .mpp-features {
+        background-color: var(--secondColor);
+        padding: 2rem 0;
+        & h2 {
+            font-weight: 600;
+        }
+    }
+
+    .mpp-features-list {
+        display: flex;
+        flex-flow: row;
+        gap: 2em;
+        min-width: 100%;
+        padding: 1em 0;
+        overflow-x: auto;
+        @media (width > 992px) {
+            flex-flow: inherit;
+        }
+    }
+</style>

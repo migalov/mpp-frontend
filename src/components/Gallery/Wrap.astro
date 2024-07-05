@@ -1,0 +1,128 @@
+---
+const { title, images } = Astro.props;
+---
+
+<div id="splide" class="splide mpp-gallery">
+    <div class="container">
+       <h2>{title}</h2> 
+    </div>
+    <div class="splide__track  mpp-gallery-track">
+        <ul class="splide__list  mpp-gallery-list">
+            {
+            images.map((image) => (
+                <li class="splide__slide mpp-gallery-item">
+                 <img class="mpp-gallery-image" src={image.src} />
+                </li>
+            ))
+            }
+        </ul>
+    </div>
+</div>
+
+<style lang="scss" is:global>
+    .mpp-gallery-list {
+        @media (width > 1270px) {
+        }
+    }
+    .mpp-gallery-item {
+
+        &.is-active .mpp-gallery-image {
+            transform: scale(1);
+        }
+        &.is-next {
+            
+            // margin-left: 2.5rem;
+            & img {
+
+                @media (width > 992px) {
+                    transform: scale(0.8) translateX(0);
+                }
+
+                @media (width > 1270px) {
+                    transform: scale(0.8) translateX(12%);
+                }
+                
+            }
+        }
+        &.is-prev {
+            // margin-right: 2.5rem;
+            & img {
+                // transform: translateX(-10%);
+                @media (width > 992px) {
+                    transform: scale(0.8) translateX(0);
+                }
+                
+                @media (width > 1270px) {
+                    transform: scale(0.8) translateX(-12%);
+                }
+
+            }
+        }
+    }
+  .mpp-gallery-image {
+    display: block;
+    margin: 0 auto;
+    max-height: 350px;
+    overflow: hidden;
+    border-radius: 15px;
+    @media (width > 992px) {
+        transform: scale(.9);
+    }
+    @media (width > 1270px) {
+        transform: scale(.8);
+    }
+
+    
+  }
+
+  .splide__arrow--next {
+    @media (width > 992px) {
+        right: 29vw;
+    }
+    @media (width > 1270px) {
+        right: 37vw;
+    }
+    
+  }
+  .splide__arrow--prev {
+    @media (width > 992px) {
+        left: 29vw;
+    }
+    @media (width > 1270px) {
+        left: 37vw;
+    }
+  }
+  /* .mpp-gallery-item, .mpp-gallery-list, .mpp-gallery-track {
+    height: 100%;
+  } */
+</style>
+
+<script>
+  const gallery = new Splide(".mpp-gallery", {
+    // classes: {
+    //     arrow : 'splide__arrow mpp-gallery-arrow'
+    // },
+    type: "loop",
+    perPage: 5,
+    focus: "center",
+    pagination: false,
+    arrows: true,
+    breakpoints: {
+      1270: {
+        perPage: 3,
+      },
+      992: {
+        perPage: 2,
+        focus: 1
+      },
+      768: {
+        perPage: 1,
+      },
+    },
+  }).mount();
+
+  splide.on( 'mounted', function () {
+    // This will be executed.
+    } );
+  gallery.next();
+</script>

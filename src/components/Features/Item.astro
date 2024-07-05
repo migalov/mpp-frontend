@@ -1,0 +1,57 @@
+---
+const { src, body } = Astro.props;
+---
+
+<li class="mpp-feature-item">
+    <img src={src} alt="">
+    <div class="mpp-feature-body" set:html={body}></div>
+</li>
+
+<style lang="scss">
+    .mpp-feature-item {
+        overflow: hidden;
+        border-radius: 10px;
+        background-color: var(--whiteColor);
+        & img {
+            object-fit: cover;
+            height: 175px;
+            width: 100%;
+        }
+        @media (width < 992px) {
+            min-width: 210px;
+        }
+        @media (width > 992px) {
+            flex: 1;
+        }
+    }
+    .mpp-feature-body {
+        padding: 1em 1.5em;
+    }
+</style>
+
+<style lang="scss" is:global>
+    .mpp-feature-body {
+        & h3 {
+            font-size: .875rem;
+            font-weight: 600;
+            margin: 0 0 .5em;
+        }
+
+        & :is(p, li) {
+            font-size: .625rem;
+            line-height: 1.4;
+            margin: .6em 0 0;
+        }
+
+        & > ul {
+            // padding: 0 0 0 1em;
+        }
+
+        & > ul > li {
+            margin: 0 0 0 1.3em;
+            list-style-type: disc;
+        }
+
+
+    }
+</style>

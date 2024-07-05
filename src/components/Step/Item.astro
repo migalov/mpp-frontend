@@ -1,0 +1,55 @@
+---
+const { number, step } = Astro.props;
+---
+
+<li
+  class:list={[
+    "mpp-steps-item",
+    {
+      "mpp-steps-item--green": step.color === "green",
+      "mpp-steps-item--violet": step.color === "violet",
+      "mpp-steps-item--gray": step.color === "gray",
+      "mpp-steps-item--orange": step.color === "orange",
+    },
+  ]}
+  style={`grid-area: s-${number}`}
+>
+  <div class="mpp-steps-item__head">
+    <span class="mpp-steps-item__number">{number}</span>
+    <h3>{step.title}</h3>
+  </div>
+</li>
+
+<style lang="scss">
+  .mpp-steps-item {
+    border-radius: 15px;
+    padding: 0.7rem 2rem;
+    &--green {
+      background-color: #deefea;
+    }
+    &--violet {
+      background-color: #e7e2f6;
+    }
+    &--gray {
+      background-color: #f0f0f0;
+    }
+    &--orange {
+      background-color: #f8714c66;
+    }
+  }
+  .mpp-steps-item__head {
+    display: flex;
+    align-items: center;
+    & h3 {
+        font-size: 0.875rem;
+        font-weight: 500;
+        line-height: 1.4;
+    }
+  }
+  .mpp-steps-item__number {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin: 0 20px 0 0;
+  }
+
+</style>

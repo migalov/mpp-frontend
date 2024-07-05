@@ -1,0 +1,33 @@
+---
+const {title, categories} = Astro.props
+import Category from "./Item.astro";
+---
+
+<div class="mpp-categories">
+    <div class="container">
+        <h2>{title}</h2>
+        <ul class="mpp-categories-list">
+            {
+                categories.map( category => <Category {...category} />)
+            }
+        </ul>
+    </div>
+</div>
+
+
+<style lang="scss">
+    .mpp-categories-list {
+        gap: 2rem;
+        display: flex;
+        flex-flow: row;
+        min-width: 100%;
+        padding: .7em 0 0;
+        position: relative;
+        overflow-x: auto;
+
+        @media (width > 768px) {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+</style>

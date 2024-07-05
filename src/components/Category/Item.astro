@@ -1,0 +1,44 @@
+---
+const { title, src, price, url } = Astro.props
+---
+
+<li class="mpp-category-item">
+    <a href={url} style={`background-image:url(${src})`}>
+        <h3>{title} от {price} ₽</h3>
+    </a>
+</li>
+
+<style lang="scss">
+    .mpp-category-item {
+        @media (width < 768px) {
+            min-width: 265px;
+        }
+        aspect-ratio: 1 / 1;
+
+        & a {
+            display: block;
+            height: 100%;
+            border-radius: 15px;
+            background-size: cover;
+            background-position: top center;
+            background-repeat: no-repeat;
+            padding: 1.3em;
+            transition: ease .5s;
+            font-size: inherit;
+            color: inherit;
+            &:hover {
+                text-decoration: none;
+                box-shadow: 0 4px 16px #0003;
+                color: var(--primaryColor);
+            }
+        }
+
+        & h3 {
+            font-size: .8125rem;
+            font-weight: 700;
+            @media (width > 992px) {
+                font-size: 1rem;
+            }
+        }
+    }
+</style>

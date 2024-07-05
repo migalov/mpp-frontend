@@ -1,0 +1,105 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+      
+      <div id="splide" class="splide">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <li class="splide__slide"><img src="https://brandontran.com/images/cardboard-castle-10.jpg"></li>
+            <li class="splide__slide"><img src="https://brandontran.com/images/cardboard-castle-5.jpg"></li>
+            <li class="splide__slide"><img src="https://brandontran.com/images/cardboard-castle-4.jpg"></li>
+            <li class="splide__slide"><img src="https://brandontran.com/images/cardboard-castle-3.jpg"></li>
+            <li class="splide__slide"><img src="https://brandontran.com/images/cardboard-castle-10.jpg"></li>
+            <li class="splide__slide"><img src="https://brandontran.com/images/cardboard-castle-5.jpg"></li>
+            <li class="splide__slide"><img src="https://brandontran.com/images/cardboard-castle-4.jpg"></li>
+            <li class="splide__slide"><img src="https://brandontran.com/images/cardboard-castle-3.jpg"></li>
+            <li class="splide__slide"><img src="https://brandontran.com/images/cardboard-castle-10.jpg"></li>
+            <li class="splide__slide"><img src="https://brandontran.com/images/cardboard-castle-5.jpg"></li>
+            <li class="splide__slide"><img src="https://brandontran.com/images/cardboard-castle-4.jpg"></li>
+            <li class="splide__slide"><img src="https://brandontran.com/images/cardboard-castle-3.jpg"></li>
+            <li class="splide__slide"><img src="https://brandontran.com/images/cardboard-castle-10.jpg"></li>
+            <li class="splide__slide"><img src="https://brandontran.com/images/cardboard-castle-5.jpg"></li>
+            <li class="splide__slide"><img src="https://brandontran.com/images/cardboard-castle-4.jpg"></li>
+            <li class="splide__slide"><img src="https://brandontran.com/images/cardboard-castle-3.jpg"></li>
+          </ul>
+        </div>
+      </div>
+
+</BaseLayout>
+
+<style lang="scss" scoped>
+.splide {
+  padding: 20px 0;
+}
+
+// Generic Slide
+.splide__slide {
+  img {
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+    transition: transform 400ms;
+    transform: scale(.7);
+    transform-origin: center center;
+  }
+}
+
+// Active Slide
+.splide__slide.is-active {
+  img {
+    transform: scale(1);
+  }
+}
+
+// Arrow Tweaks for Accessibility
+.splide .splide__arrow {
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  transform: none;
+  border-radius: unset;
+  width: 50px;
+  opacity: .9;
+  svg {
+    filter: invert(1);
+    width: 24px;
+    height: 24px;
+  }
+}
+.splide__arrow.splide__arrow--prev {
+  left: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,.7) 0%, rgba(0,0,0,0) 100%);
+}
+.splide__arrow.splide__arrow--next {
+  right: 0;
+  background: linear-gradient(270deg, rgba(0,0,0,.7) 0%, rgba(0,0,0,0) 100%);
+}
+
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script>
+    document.addEventListener( 'DOMContentLoaded', function () {
+  new Splide('#splide', {
+    type: 'loop',
+    perPage: 3,
+    focus: 'center',
+    autoplay: true,
+    interval: 8000,
+    updateOnMove: true,
+    pagination: false,
+    padding: '10%',
+    fixedWidth: "340px",
+    breakpoints: {
+      1270: {
+        perPage: 1,
+        padding: '30%'
+      },
+      768: {
+        perPage: 1,
+      }
+    }
+  }).mount();
+});
+</script>

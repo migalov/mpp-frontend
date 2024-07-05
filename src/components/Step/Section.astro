@@ -1,0 +1,45 @@
+---
+const { data } = Astro.props;
+import Item from "./Item.astro";
+---
+<section class="mpp-steps-section">
+    <div class="container">
+        <h2>{data.title}</h2>
+        <ol class={"mpp-steps-list"} data-items={data.steps.length}>
+            {
+                data.steps.map( (step, index) => <Item number={index+1} step={step} />)
+            }
+        </ol>
+    </div>
+</section>
+
+<style lang="scss">
+    .mpp-steps-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        @media (width > 768px) {
+            gap: 1.5rem;
+        }
+
+        @media (width > 992px) {
+            gap: 2rem;
+        }
+
+        &[data-items="4"] {
+            @media (width > 768px) {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-areas: "s-1 s-3" "s-2 s-4";
+            }
+
+            @media (width > 992px) {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-areas: "s-1 s-2 s-3 s-4";
+            }
+            
+        }
+    }
+</style>

@@ -9,9 +9,9 @@ import "../styles/32a48453ca1f33fb83fedabd7ea361ea.css";
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="generator" content={Astro.generator} />
-        <meta charset="UTF-8">
+        <meta charset="UTF-8" />
 		<title>{title}</title>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
@@ -32,6 +32,7 @@ import "../styles/32a48453ca1f33fb83fedabd7ea361ea.css";
         --whiteColor: #fff;
         --lavandaColor: #e7e2f6;
         --greenColor: #deefea;
+        --sm: 768px;
     }
     html, body {
         margin: 0;
@@ -45,6 +46,27 @@ import "../styles/32a48453ca1f33fb83fedabd7ea361ea.css";
     }
     img {
         max-width: 100%;
+    }
+    .btn {
+        margin: .75rem 0 0;
+        height: 34px;
+        transition: ease .5s;
+        font-weight: 700;
+        min-width: 120px;
+        border-radius: 15px;
+        background: #f8714c;
+        border: 1px solid var(--primaryColor);
+        color: #fff;
+    }
+    .btn-default {
+        background-color: var(--primaryColor);
+        color: #FFFFFF;
+        border: 1px solid var(--primaryColor);
+    }
+    .btn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>
 

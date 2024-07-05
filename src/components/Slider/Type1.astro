@@ -21,7 +21,7 @@ const { banners } = Astro.props;
     }
 </ul> -->
 
-<section id="image-carousel" class="mpp-landing-page-slider-1 splide" aria-label="Beautiful Images">
+<section id="image-carousel" class="mpp-landing-page-slider-1 splide  container" aria-label="Beautiful Images">
     <div class="splide__track">
           <ul class="splide__list">
             {
@@ -77,7 +77,7 @@ const { banners } = Astro.props;
 </style>
 
 <script>
-    const mainSliderDesktop = new Splide('.splide', {
+    const mainSliderDesktop = new Splide('.mpp-landing-page-slider-1', {
         type: 'fade',
         rewind: true,
         arrows: false,

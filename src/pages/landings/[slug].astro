@@ -2,6 +2,11 @@
 import flattenAttributes from '../../utils/flattenAttributes';
 import Slider  from "../../components/Slider/Type1.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import StepSection from "../../components/Step/Section.astro";
+import CategoriesSection from "../../components/Category/Section.astro";
+import FeaturesSection from "../../components/Features/Section.astro";
+import Gallery from "../../components/Gallery/Wrap.astro";
+import Type1 from '../../components/Banners/Type1.astro';
 
 export function getStaticPaths() {
   return [
@@ -12,35 +17,71 @@ export function getStaticPaths() {
 const {slug} =  Astro.params;
 const response = await fetch(`${import.meta.env.HOST_API}/landing-pages?filters[slug]=${slug}&populate[content][populate]=*`).then(x  => x.json());
 const page = flattenAttributes(response.data[0]);
+const selfAssembly = await fetch(`${import.meta.env.HOST_API}/self-assembly?populate[stepsBlock][populate][steps]=*`).then(x  => x.json());
+const selfAssemblyData = flattenAttributes(selfAssembly.data);
+const featureFotobookForYou = await fetch(`${import.meta.env.HOST_API}/fotobook-for-you?populate[featuresBlock][populate][features]=*`).then(x  => x.json());
+const featureFotobookForYouData = flattenAttributes(featureFotobookForYou.data);
 ---
 
 <BaseLayout title={page.title}>
-    <div class="container">
         <div class="mpp-landing-page">
-            <span>1</span>
             {
                 page?.content?.map( block => 
-
-                    block.__component === "ui-slider.slider" && <Slider banners={block.banners}  />
+                    <>
+                        {block.__component === "ui-slider.slider" && <Slider banners={block.banners}  />}
+                    </>
+                    <>
+                        {
+                            block.__component === "ui-elements.categories-block" && <CategoriesSection title={block.title} categories={block.categories} />
+                        }
+                    </>
+                    <>
+                        {
+                            block.__component === "ui-slider.gallery" && <Gallery {...block} />
+                        }
+                    </>
+                    // <>
+                    //     {
+                    //         block.__component === "seo.seo-block" && <span>SEO</span>
+                    //     }
+                    // </>
+                    // <>
+                    //     {
+                    //         block.__component === "ui-slider.gallery" && <span>Gallery</span>
+                    //     }
+                    // </>
+                    
                 )
             }
+            {
+                <StepSection data={selfAssemblyData.stepsBlock} />
+                <FeaturesSection {...featureFotobookForYouData.featuresBlock} />
+                <Type1 />
+            }
         </div>
-
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 </BaseLayout>
 
 
 <style lang="scss" is:global>
     .mpp-landing-page {
-        & :is(ul, li) {
+
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1.313rem, -0.616rem + 4.018vw, 1.875rem);
+
+        & :is(ul, ol, li) {
             list-style-type: none;
             padding: 0;
         }
 
         & :is(h1, h2, h3, h4) {
-            margin: 0;
             padding: 0;
+        }
+
+        & h2 {
+            font-size: 1.25rem;
+            margin: 0 0 1em;
         }
     }
 </style>
