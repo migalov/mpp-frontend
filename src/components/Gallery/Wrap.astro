@@ -11,7 +11,7 @@ const { title, images } = Astro.props;
       {
         images.map((image) => (
           <li class="splide__slide mpp-gallery-item">
-            <img class="mpp-gallery-image" src={image.src} />
+            <img class="mpp-gallery-image" data-splide-lazy={image.src} />
           </li>
         ))
       }
@@ -23,6 +23,9 @@ const { title, images } = Astro.props;
   .mpp-gallery {
     @media (width < 768px) {
       padding: 0 2rem;
+    }
+    & .container {
+      padding: 0;
     }
   }
   .mpp-gallery-list {
@@ -122,6 +125,7 @@ const { title, images } = Astro.props;
       prev: 'splide__arrow--prev mpp-gallery-arrow__prev',
 		  next: 'splide__arrow--next mpp-gallery-arrow__next',
     },
+    lazyLoad: 'nearby',
     updateOnMove: true,
     type: "loop",
     perPage: 7,

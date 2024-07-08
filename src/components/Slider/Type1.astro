@@ -9,8 +9,8 @@ const { banners } = Astro.props;
                 banners.map((banner, index) => 
                     <li class="mpp-landing-page-slider-1__slide  splide__slide">
                         <div class="mpp-landing-page-slider-1__shadow"></div>
-                        <img class="mpp-landing-page-slider-1__image-desktop" data-src={banner.srcDesktop} alt="" />
-                        <img class="mpp-landing-page-slider-1__image-mobile" data-src={banner.srcMobile} alt="" />
+                        <img class="mpp-landing-page-slider-1__image-desktop" data-splide-lazy={banner.srcDesktop} alt="" />
+                        <img class="mpp-landing-page-slider-1__image-mobile" data-splide-lazy={banner.srcMobile} alt="" />
                         <div class="mpp-landing-page-slider-1__content">
                             {
                                 index === 0 && <h1 set:html={banner.title}></h1>
@@ -49,6 +49,7 @@ const { banners } = Astro.props;
             color: var(--whiteColor);
             font-size: 1.5rem;
             font-weight: 700;
+            font-family: "Montserrat", sans-serif;
         }
 
         & :is(h1, h2) {
@@ -60,7 +61,6 @@ const { banners } = Astro.props;
             @media (width < 768px) {
                 align-self: center;
                 width: 250px;
-                padding: 1.4em 0;
                 border-radius: 2rem;
             }
         }

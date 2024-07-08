@@ -2,14 +2,23 @@
 const { title, src, price, url } = Astro.props
 ---
 
-<li class="mpp-category-item">
+<li class:list={["mpp-category-item", {
+    "mpp-category-item--empty": !src
+}]}>
     <a href={url} data-bg-src={src}>
-        <h3>{title} от {price} ₽</h3>
+        {
+            price && <h3>{title} от {price} ₽</h3>
+        }
+        {
+            !price && <h3>{title}</h3>
+        }
     </a>
 </li>
 
 <style lang="scss">
     .mpp-category-item {
+        border-radius: 15px;
+        overflow: hidden;
         @media (width < 768px) {
             min-width: 265px;
         }
@@ -38,6 +47,15 @@ const { title, src, price, url } = Astro.props
             font-weight: 700;
             @media (width > 992px) {
                 font-size: 1rem;
+            }
+        }
+        &--empty {
+            background-color: var(--lavandaColor);
+
+            & a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
         }
     }

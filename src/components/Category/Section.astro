@@ -10,6 +10,7 @@ import Category from "./Item.astro";
             {
                 categories.map( category => <Category {...category} />)
             }
+            <Category title={"Все категории"} url={"/all"} />
         </ul>
     </div>
 </div>

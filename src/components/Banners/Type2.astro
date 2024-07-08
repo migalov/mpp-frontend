@@ -1,0 +1,93 @@
+
+<div class="container">
+    <div class="mpp-banner-type-2" style="
+        background: linear-gradient(270deg, rgba(196, 196, 196, 0) 0%, #767676 100%),
+        url(https://static.wow2print.com/storage/445/content/image/1417239358668ba69435ea19.09434573.webp)
+        no-repeat
+        top center / cover
+        ">
+        <div class="mpp-banner-type-2-wrap" style="
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%),
+            url(https://static.wow2print.com/storage/445/content/image/657937477668ba693bbf254.10835128.webp)
+            no-repeat
+            bottom center / cover
+        ">
+            <div class="mpp-banner-type-2-text">
+                <h2>Подарите фотоистории с праздника вашим гостям, близким и друзьям</h2>
+                <p class="mpp-banner-type-2-text__text-mobile">Воспользуйтесь промокодом <span style="font-weight:600;color:var(--primaryColor)">ВЫГОДА10</span> на скидку 10% при покупки от 3-х фотокниг</p>
+                <p class="mpp-banner-type-2-text__text-desktop">Соберите небольшой презент с их участием и воспользуйтесь промокодом <strong>ВЫГОДА10</strong> на скидку 10% при покупке от 3-х фотокниг</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style lang="scss">
+    .mpp-banner-type-2 {
+        overflow: hidden;
+        border-radius: 15px;
+                background-size: cover;
+        background-position: top center;
+        height: 250px;
+        @media (width > 768px) {
+            height: 280px;
+        }
+    }
+
+    .mpp-banner-type-2-wrap {
+        padding: 1rem;
+        background-size: cover;
+        background-position: top center;
+        height: 100%;
+        @media (width > 768px) {
+            background-image: none!important;
+            padding: 3em 3.8rem;
+        }
+    }
+    .mpp-banner-type-2-text {
+        @media (width > 768px) {
+            width: 75%;
+        }
+        @media (width > 992px) {
+            width: 50%;
+        }
+        & :is(h2, p, a) {
+            color: var(--whiteColor);
+        }
+        & h2 {
+            font-size: .875rem;
+            font-weight: 600;
+            margin: 0 0 .3em;
+            @media (width > 768px) {
+                font-size: 1.75rem;
+                font-weight: 500;
+                margin: 0 0 .5em
+            }
+
+            & a {
+                color: inherit;
+            }
+        }
+        & p {
+            font-size: .8125rem;
+            @media (width > 768px) {
+                font-size: .875rem;
+            }
+        }
+        @media (width < 768px) {
+             padding: 1.5rem;   
+        }
+        
+    }
+
+    .mpp-banner-type-2-text__text-mobile {
+        @media (width > 768px) {
+            display: none;
+        }
+    }
+
+    .mpp-banner-type-2-text__text-desktop {
+        @media (width < 768px) {
+            display: none;
+        }
+    }
+</style>
