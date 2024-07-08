@@ -7,6 +7,8 @@ import CategoriesSection from "../../components/Category/Section.astro";
 import FeaturesSection from "../../components/Features/Section.astro";
 import Gallery from "../../components/Gallery/Wrap.astro";
 import Type1 from '../../components/Banners/Type1.astro';
+import Discount from '../../components/Banners/Discount.astro';
+import SEOBlock from '../../components/SEOBlock.astro';
 
 export function getStaticPaths() {
   return [
@@ -40,16 +42,11 @@ const featureFotobookForYouData = flattenAttributes(featureFotobookForYou.data);
                             block.__component === "ui-slider.gallery" && <Gallery {...block} />
                         }
                     </>
-                    // <>
-                    //     {
-                    //         block.__component === "seo.seo-block" && <span>SEO</span>
-                    //     }
-                    // </>
-                    // <>
-                    //     {
-                    //         block.__component === "ui-slider.gallery" && <span>Gallery</span>
-                    //     }
-                    // </>
+                    <>
+                        {
+                            block.__component === "seo.seo-block" && <SEOBlock {...block} />
+                        }
+                    </>
                     
                 )
             }
@@ -57,6 +54,9 @@ const featureFotobookForYouData = flattenAttributes(featureFotobookForYou.data);
                 <StepSection data={selfAssemblyData.stepsBlock} />
                 <FeaturesSection {...featureFotobookForYouData.featuresBlock} />
                 <Type1 />
+            }
+            {
+                <Discount />
             }
         </div>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
@@ -81,8 +81,53 @@ const featureFotobookForYouData = flattenAttributes(featureFotobookForYou.data);
 
         & h2 {
             font-size: 1.25rem;
-            margin: 0 0 1em;
+            margin: 1em;
+        }
+    }
+
+    .splide__pagination {
+        bottom: 1rem;
+    }
+
+    .splide__pagination__page {
+        opacity: 1;
+        background-color: #fff;
+
+        &.is-active {
+            background-color: rgba(255,255,255,.5);
+            transform: scale(1);
+        }
+    }
+
+    .btn {
+        color: var(--whiteColor);
+        &:hover {
+            background-color: var(--whiteColor);
+            color: var(--primaryColor);
         }
     }
 </style>
+
+<script>
+    const imageObserver = new IntersectionObserver(
+    (entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                if(entry.target.hasAttribute("data-src")) {
+                    entry.target.src = entry.target.dataset.src;
+                    observer.unobserve(entry.target)
+                }
+                if(entry.target.hasAttribute("data-bg-src")) {
+                    entry.target.style.backgroundImage = `url('${entry.target.dataset.bgSrc}')`;
+                    observer.unobserve(entry.target);
+                }
+            }
+        })
+    },
+    {
+        rootMargin: "0px"
+    }
+)
+document.querySelectorAll("div, img, a, iframe").forEach((image) => imageObserver.observe(image))
+</script>
 

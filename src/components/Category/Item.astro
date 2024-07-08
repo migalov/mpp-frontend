@@ -3,7 +3,7 @@ const { title, src, price, url } = Astro.props
 ---
 
 <li class="mpp-category-item">
-    <a href={url} style={`background-image:url(${src})`}>
+    <a href={url} data-bg-src={src}>
         <h3>{title} от {price} ₽</h3>
     </a>
 </li>

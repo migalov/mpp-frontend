@@ -1,0 +1,46 @@
+---
+const { column1, column2, oneColumnMode } = Astro.props;
+---
+
+<div class=`mpp-seo-bottom container${oneColumnMode === true ? " mpp-seo-bottom--one-col" : ""}`>
+    <div class="mpp-seo-bottom-col" set:html={column1} />
+    <div class="mpp-seo-bottom-col" set:html={column2} />
+</div>
+
+<style is:global lang="scss">
+    .mpp-seo-bottom {
+        margin: 1rem auto 0;
+        @media (min-width: 768px) {
+            margin: 2rem auto 0;
+            display: flex;
+            gap: 2rem;
+            &.mpp-seo-bottom--one-col {
+                display: block;
+            }
+        }
+        
+    }
+    .mpp-seo-bottom-col {
+        & p, & li, & h4 {
+            font-size: .75rem;
+            color: rgba(0,0,0,0.5);
+        }
+        & ol > li {
+            list-style-type: inherit;
+        }
+        @media (min-width: 768px) {
+            flex: 1;
+        }
+    }
+    .mpp-seo-bottom-col h4 {
+        margin: 0 0 .5em;
+    }
+
+    .mpp-seo-bottom-col p:has( +h4), .mpp-seo-bottom-col p:has( +p), .mpp-seo-bottom-col ol:has( +h4),  .mpp-seo-bottom-col ul:has( +h4) {
+        margin: 0 0 .4em;
+    }
+
+    .mpp-seo-bottom-col a {
+        text-decoration: underline;
+    }
+</style>

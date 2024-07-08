@@ -1,8 +1,96 @@
+<style lang="scss">
+    .mpp-banner-type-1 {
+        background-color: #e7e1f5;
+        border-radius: 15px;
+        overflow: hidden;
+        margin: 1.25rem 0 0;
 
+        background-image: url(https://static.wow2print.com/storage/445/content/image/13223324966689563f733c07.96680343.webp);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: left bottom;
+
+
+        @media (width > 768px) {
+            margin: 2rem 0 0;
+            background-image: url(https://static.wow2print.com/storage/445/content/image/10389459096689563f00e146.63025508.webp);
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        @media (width < 768px) {
+            height: 250px;
+        }
+
+        & .btn {
+            @media (width < 768px) {
+                display: none;
+            }
+        }
+
+        & a {
+            @media (width < 768px) {
+                text-decoration: underline;      
+            }
+            color: var(--blackColor);
+        }
+
+    }
+
+    .mpp-banner-type-1-wrap {
+        @media (width > 768px) {
+            padding: 3em 3.8rem 3.6em 0;;
+            width: 50%;
+            margin-left: auto;
+        }
+    }
+
+    .mpp-banner-type-1-text {
+        & h2 {
+            font-size: .875rem;
+            font-weight: 600;
+            margin: 0 0 .3em;
+            @media (width > 768px) {
+                font-size: 1.75rem;
+                font-weight: 500;
+                margin: 0 0 .5em
+            }
+        }
+        & p {
+            font-size: .8125rem;
+            @media (width > 768px) {
+                font-size: .875rem;
+            }
+        }
+        @media (width < 768px) {
+             padding: 1.5rem;   
+        }
+        
+    }
+
+    .mpp-banner-type-1__image-desktop {
+        @media (width < 768px) {
+            display: none;
+        }
+    }
+
+    .mpp-banner-type-1__image-mobile {
+        position: relative;
+        top: 4px;
+        margin: .2em 0 0;
+        @media (width > 768px) {
+            display: none;
+        }
+    }
+
+</style>
 <div class="container">
     <div class="mpp-banner-type-1">
-        <h2>Легко, быстро, креативно</h2>
-        <p>Не успеваешь найти подарок? Оформи сертификат и получи его в течение 5 минут!<br />Номиналы от 1000 ₽</p>
-        <a href="btn btn-default" href="/produkciya/el-sertificat">Заказать</a>
+        <div class="mpp-banner-type-1-wrap">
+            <div class="mpp-banner-type-1-text">
+                <h2><a href="/produkciya/el-sertificat">Легко, быстро, креативно</a></h2>
+                <p>Не успеваешь найти подарок? Оформи сертификат и получи его в течение 5 минут!<br />Номиналы от 1000 ₽</p>
+                <a href="/el-sertificat" class="btn btn-default">Заказать</a>
+            </div>
+        </div>
     </div>
 </div>

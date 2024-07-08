@@ -3,7 +3,7 @@ const { src, body } = Astro.props;
 ---
 
 <li class="mpp-feature-item">
-    <img src={src} alt="">
+    <img data-src={src} alt="">
     <div class="mpp-feature-body" set:html={body}></div>
 </li>
 
