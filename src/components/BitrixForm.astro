@@ -1,0 +1,117 @@
+---
+const { title, script } = Astro.props
+---
+
+<div class="custom-bitrix-form">
+    <h2>{title}</h2>
+    <div class="custom-bitrix-form-wrap" set:html={script}>
+</div>
+
+
+
+
+
+<style lang="scss" is:global>
+    .custom-bitrix-form {
+  max-width: 500px;
+  margin: 1rem auto 0
+}
+
+.custom-bitrix-form h2 {
+  font-weight: 500;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .custom-bitrix-form {
+          margin: 2rem auto 0
+  }
+}
+
+.b24-form-control-label {
+  font-size: .875rem !important
+}
+
+.b24-form-content.b24-form-padding-side {
+  padding: 0
+}
+
+.b24-form-control,
+.b24-form-control-label,
+.b24-form-control-comment,
+.b24-form-field-agreement-link,
+.b24-form-btn,
+.b24-form-basket-label,
+.b24-form-basket-value {
+  font-family: Montserrat, sans-serif !important
+}
+
+.b24-form-control-comment {
+  font-size: .75rem !important
+}
+
+.b24-form-control-desc,
+.b24-form-field-agreement-link {
+  color: #000 !important
+}
+
+.b24-form-wrapper.b24-form-shadow.b24-form-border-top.b24-form-border-bottom {
+  border: none;
+  background: transparent;
+  box-shadow: none
+}
+
+.b24-form-btn {
+  background-color: #f3704e !important
+}
+
+.b24-form-control-container input[type=checkbox] {
+  display: none
+}
+
+.b24-form-control-container:has(input[type=checkbox]) {
+  cursor: pointer;
+  position: relative;
+  padding: 0 0 0 2rem
+}
+
+.b24-form-control-container:has(input[type=checkbox]):before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-image: url(https://static.wow2print.com/storage/445/content/image/955683898660bda27e27990.03366592.svg)
+}
+
+.b24-form-control-container:has(input[type=checkbox]:checked) {
+  position: relative
+}
+
+.b24-form-control-container:has(input[type=checkbox]:checked):before {
+  background-image: url(https://static.wow2print.com/storage/445/content/image/1714866385660bd85d898562.44985043.svg)
+}
+
+.b24-form-sign {
+  display: none !important;
+}
+
+.b24-form-basket {
+  border: none !important;
+  padding: 1rem;
+  background-color: #f0f0f0
+}
+
+.b24-form-basket-label,
+.b24-form-basket-value {
+  font-size: 1rem !important;
+  font-weight: 700
+}
+
+.b24-form-basket-pay .b24-form-basket-label:first-child {
+  width: auto !important;
+  text-align: left
+}
+</style>

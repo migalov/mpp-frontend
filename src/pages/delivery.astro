@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import flattenAttributes from "../utils/flattenAttributes";
+import TableBody from "../components/Table/Body.astro";
+import HTMLBlock from "../components/HTMLBlock.astro";
+import Banner from "../components/Banners/Type4.astro";
+import Discount from "../components/Banners/Discount.astro";
+
+
+const response = await fetch(`${import.meta.env.HOST_API}/landing-pages?filters[slug]=delivery&populate[content][populate]=*`).then(x  => x.json());
+const page = flattenAttributes(response.data[0]);
+---
+
+<BaseLayout>
+    <!-- <code>
+        {JSON.stringify(response.data)}
+    </code> -->
+    <div class="mpp-delivery">
+        {
+            page?.content?.map( block => 
+                <>
+                    {block.__component === "ui-slider.banner" && <Banner {...block} />}
+                </>
+                <>
+                    {block.__component === "table.table" && <TableBody {...block} />}
+                </>
+                <>
+                    {
+                        block.__component === "html.html-block" && <HTMLBlock {...block} />
+                    }
+                </>
+                <>
+                        {
+                            block.__component === "ui-slider.banner" && <Discount {...block} />
+                        }
+                </>
+                
+            )
+        }
+    </div>
+</BaseLayout>
+
+
+
+<style lang="scss" is:global>
+    .mpp-delivery {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+</style>

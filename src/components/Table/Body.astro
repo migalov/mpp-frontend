@@ -1,0 +1,87 @@
+---
+const {body, rows} = Astro.props;
+const backgroundHeadClass = ["mpp-table-head", {
+                "mpp-table-head--violet": body.color === "violet",
+                "mpp-table-head--green": body.color === "green" 
+            }]
+---
+<div class="container">
+    <table class="mpp-table">
+        <thead>
+            <tr>
+                <th colspan="3"  class:list={backgroundHeadClass}>{body.title}</th>
+            </tr>
+            <tr>
+                <th>Город доставки</th>
+                <th>Срок доставки (дни)</th>
+                <th>Стоимость доставки курьером (₽)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {
+                rows.map( row =>
+                    <tr>
+                        <td data-label="Город доставки">{row.city}</td>
+                        <td data-label="Срок доставки (дни)">{row.days}</td>
+                        <td data-label={`Стоимость доставки курьером (₽)`}>{row.price}</td>
+                    </tr>
+                )
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+            <th class:list={backgroundHeadClass} colspan="3">{body.end}</th> 
+            </tr>
+        </tfoot>
+    </table>    
+</div>
+
+
+<style lang="scss">
+    .mpp-table {
+        width: 100%;
+        &, & th, & td {
+            border: 1px solid rgba(240, 240, 240, 1);
+            border-collapse: collapse;
+        }
+        @media (width < 540px) {
+            font-size: 90%;
+            border: 0;
+        }
+        @media (width < 400px) {
+            font-size: 80%;
+        }
+        & th, td {
+            text-align: center;
+            padding: .45em;
+
+        }
+
+        & thead tr:nth-child(2) {
+        }
+
+        & tbody {
+            & td {
+                width: 33.333%;
+
+                &::before {
+
+                    
+                }
+            }
+        }
+        & tr:nth-child(2n) td {
+            background-color: rgba(240, 240, 240, 0.4);
+        }
+    }
+    
+
+    .mpp-table-head {
+        &--violet {
+            background-color: var(--lavandaColor);
+        }
+        &--green {
+            background-color: var(--greenColor);
+        }
+    }
+</style>
