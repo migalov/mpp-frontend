@@ -11,11 +11,14 @@ import Type2 from '../../components/Banners/Type2.astro';
 import Type3 from '../../components/Banners/Type3.astro';
 import Discount from '../../components/Banners/Discount.astro';
 import SEOBlock from '../../components/SEOBlock.astro';
+import ImageText from '../../components/Banners/ImageText.astro';
+import CustomBanner from '../../components/Banners/Custom.astro';
 
 export function getStaticPaths() {
   return [
     {params: {slug: 'travel'}},
     {params: {slug: 'weeding'}},
+    {params: {slug: 'bonusy-za-otzyvy'}}
   ];
 }
 
@@ -29,26 +32,35 @@ const featureFotobookForYouData = flattenAttributes(featureFotobookForYou.data);
 ---
 
 <BaseLayout title={page.title}>
-        <div class="mpp-landing-page">
-            <Type3 />
-            <Type2 />
+        <div class="mpp-landing-page container">
             {
                 page?.content?.map( block => 
                     <>
-                        {/* {block.__component === "ui-slider.slider" && <Slider banners={block.banners}  />} */}
+                        {(block.__component === "ui-slider.banner" && !block.width ) && <ImageText {...block}  />}
                     </>
                     <>
                         {
-                            block.__component === "ui-elements.categories-block" && <CategoriesSection title={block.title} categories={block.categories} />
+                            // block.__component === "ui-elements.categories-block" && <CategoriesSection title={block.title} categories={block.categories} />
                         }
+                    </>
+                    <>
+                        {
+                            // block.__component === "ui-elements.categories-block" && <CategoriesSection title={block.title} categories={block.categories} />
+                        }
+                    </>
+                    <>
+                        {(block.__component === "ui-slider.banner" && block?.width !== "") && <CustomBanner {...block}  />}
                     </>
                     <>
                         {
                             block.__component === "ui-slider.gallery" && <Gallery {...block} />
                         }
                     </>
-
-                    
+                    <>
+                        {
+                            block.__component === "seo.seo-block" && <SEOBlock {...block} />
+                        }
+                    </>
                 )
             }
             <!-- {

@@ -1,0 +1,61 @@
+---
+const {srcMobile, srcDesktop, body, width} = Astro.props
+---
+<a href="/" class="mpp-custom-banner">
+  <div class="mpp-custom-banner-text" set:html={body}></div>
+  <img
+    class="mpp-custom-banner__img-mobile"
+    src={srcMobile}
+    height="140"
+  />
+  <img
+    class="mpp-custom-banner__img-desktop"
+    src={srcDesktop}
+    height="210"
+  />
+</a>
+
+<style lang="scss" is:global>
+  .mpp-custom-banner {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    background-color: var(--lavandaColor);
+    border-radius: 15px;
+
+    @media (width > 768px) {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    &:hover {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    
+  }
+  .mpp-custom-banner-text {
+    align-self: center;
+    padding: clamp(1rem, -2.06rem + 6.375vw, 3rem);
+    & h2 {
+        font-size: clamp(0.875rem, -0.464rem + 2.789vw, 1.75rem)!important;
+    }
+
+    & p {
+        font-size: clamp(0.813rem, 0.717rem + 0.199vw, 0.875rem);
+    }
+  }
+  .mpp-custom-banner__img-mobile {
+    object-fit: cover;
+    @media (width > 768px) {
+      display: none;
+
+    }
+  }
+  .mpp-custom-banner__img-desktop {
+    @media (width <= 768px) {
+      display: none;
+    }
+  }
+</style>
