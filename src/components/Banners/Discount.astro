@@ -22,7 +22,6 @@ const { title, price, bgColor } = Astro.props;
         display: flex;
         flex-direction: column;
         gap: .25em;
-        background-color: #DEEFEA;
         padding: 1.5rem;
         border-radius: 15px;
         @media (width > 768px) {
@@ -47,6 +46,16 @@ const { title, price, bgColor } = Astro.props;
         }
         & .mpp-disc-prom__price {
             font-weight: 700;
+        }
+
+        &--green {
+            background-color: var(--lavandaColor);
+        }
+        &--violet {
+            background-color: var(--lavandaColor);
+        }
+        &--orange {
+            background-color: #f8714c66;
         }
     }
     

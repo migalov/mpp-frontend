@@ -1,0 +1,69 @@
+---
+const { srcMobile, srcDesktop, body } = Astro.props;
+---
+<div class="container">
+    <section class="mpp-banner-type-6">
+        <picture>
+          <source media="(max-width: 767px)" type="image/webp" srcset={srcMobile} />
+          <source media="(min-width: 768px)" type="image/webp" srcset={srcDesktop} />
+          <img src={srcDesktop} />
+        </picture>
+        <div class="mpp-banner-type-6-body" set:html={body} />
+      </section>
+</div>
+
+
+<style lang="scss" is:global>
+  .mpp-banner-type-6 {
+    position: relative;
+    & img {
+        overflow: hidden;
+        border-radius: 15px;
+        object-fit: cover;
+        width: 100%;
+        @media (width < 768px) {
+            height: 212px;
+            object-position: right;
+        }
+    }
+
+    & :is(p, li, strong) {
+        font-size: 0.875rem;
+    }
+
+    & h2 {
+        font-size: clamp(0.875rem, -0.464rem + 2.789vw, 1.75rem);
+        font-weight: 600;
+        @media (width < 768px) {
+            display: flex;
+            flex-direction: column;
+            gap: .25em;
+        }
+    }
+    & ul {
+        @media (width < 768px) {
+            display: none;
+        }
+    }
+    & li {
+        font-size: .875rem;
+        font-weight: 700;
+    }
+  }
+
+  .mpp-banner-type-6-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: clamp(1em, -2.06em + 6.375vw, 3em);
+    @media (width > 768px) {
+        width: 60%;
+    }
+  }
+</style>

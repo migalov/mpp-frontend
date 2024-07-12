@@ -6,6 +6,7 @@ import HTMLBlock from "../components/HTMLBlock.astro";
 import Banner from "../components/Banners/Type4.astro";
 import BitrixForm from "../components/BitrixForm.astro";
 import Discount from "../components/Banners/Discount.astro";
+import Type6 from "../components/Banners/Type6.astro";
 
 
 const response = await fetch(`${import.meta.env.HOST_API}/landing-pages?filters[slug]=contacts&populate[content][populate]=*`).then(x  => x.json());
@@ -13,15 +14,12 @@ const page = flattenAttributes(response.data[0]);
 ---
 
 <BaseLayout>
-    <!-- <code>
-        {JSON.stringify(response.data)}
-    </code> -->
     <div class="mpp-contacts">
         {
             page?.content?.map( block => 
-                // <>
-                //     {block.__component === "ui-slider.banner" && <Banner {...block} />}
-                // </>
+                <>
+                    {block.__component === "ui-slider.banner" && <Type6 {...block} />}
+                </>
                 <>
                     {block.__component === "ui-elements.i-frame" && <WidgetMap {...block} />}
                 </>
@@ -34,9 +32,7 @@ const page = flattenAttributes(response.data[0]);
                     {
                         block.__component === "html.bitrix-form" && <BitrixForm {...block} />
                     }
-                </>
-
-                
+                </> 
             )
         }
     </div>
@@ -49,5 +45,9 @@ const page = flattenAttributes(response.data[0]);
         display: flex;
         flex-direction: column;
         gap: 2rem;
+
+        & p {
+            font-size: .875rem;
+        }
     }
 </style>

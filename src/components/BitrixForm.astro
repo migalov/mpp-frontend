@@ -1,11 +1,13 @@
 ---
 const { title, script } = Astro.props
 ---
-
-<div class="custom-bitrix-form">
-    <h2>{title}</h2>
-    <div class="custom-bitrix-form-wrap" set:html={script}>
+<div class="container">
+  <div class="custom-bitrix-form">
+      <h2>{title}</h2>
+      <div class="custom-bitrix-form-wrap" set:html={script}>
+  </div>
 </div>
+
 
 
 
