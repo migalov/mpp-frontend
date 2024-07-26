@@ -1,0 +1,96 @@
+---
+const { title } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="generator" content={Astro.generator} />
+        <meta charset="UTF-8" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700" rel="stylesheet">
+		<title>{title}</title>
+	</head>
+	<body>
+        <div class="mpp-profile container">
+            <nav>
+                <ul>
+                    <li><a href="#">Профиль</a></li>
+                    <li><a href="#">Личные данные</a></li>
+                    <li><a href="#">Мои заказы</a></li>
+                    <li><a href="#">Мои проекты</a></li>
+                    <li><a href="#">Фотогалерея</a></li>
+                    <li><a href="#">Реферальная программа</a></li>
+                </ul>
+            </nav>
+            <main>
+                <slot />
+            </main>
+        </div>
+	</body>
+</html>
+
+<style lang="scss">
+    .mpp-profile {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+
+        & main {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+        }
+    }
+</style>
+
+<style is:global>
+    :root {
+        --primaryColor: #f3704e;
+        --secondColor: #f0f0f0;
+        --violetColor: #9747ff;
+        --orangeSecondColor: #f79767;
+        --elecPink: #ff3596;
+        --blackColor: #000;
+        --whiteColor: #fff;
+        --lavandaColor: #e7e2f6;
+        --greenColor: #deefea;
+        --sm: 768px;
+    }
+    html, body {
+        margin: 0;
+        padding: 0;
+        font-family: "Montserrat", sans-serif;
+    }
+    .container {
+        margin: 0 auto;
+        padding: 0 2rem;
+        width: 1270px;
+    }
+    img {
+        max-width: 100%;
+    }
+    .btn {
+        margin: .75rem 0 0;
+        height: 34px;
+        transition: ease .5s;
+        font-weight: 700;
+        min-width: 120px;
+        border-radius: 15px;
+        background: #f8714c;
+        border: 1px solid var(--primaryColor);
+        color: #fff;
+    }
+    .btn-default {
+        background-color: var(--primaryColor);
+        color: #FFFFFF;
+        border: 1px solid var(--primaryColor);
+    }
+    .btn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Montserrat", sans-serif;
+    }
+</style>
+
+

@@ -1,0 +1,62 @@
+---
+const {type, id, name, title, hasValue = false, pattern, dataType} = Astro.props;
+---
+
+<div class:list={["mpp-user-data-form-group", {
+    "mpp-user-data-form-group--has-value": hasValue == true
+}]}>
+    <input type={type} id={id} name={name} pattern={pattern} data-type={dataType}>
+    <label for={id} for="">{title}</label>
+</div>
+
+<style lang="scss" is:global>
+    .mpp-user-data-form-group {
+        position: relative;
+
+        & label {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: .8em;
+            transition: ease .5s;
+            font-size: .875rem;
+        }
+
+        & input {
+            width: 100%;
+            padding: 0.7em 0.8em 0.5em;
+            font-size: .875rem;
+            border-radius: 5px;
+            border: 1px solid #F0F0F0;
+            outline: none;
+            &:focus {
+                border: 1px solid var(--primaryColor);
+            }
+            &:focus ~ label {
+                font-size: .5rem;
+                transform: translateY(calc(-50% - 1.2em));
+                left: 1.5em;
+
+
+            }
+        }
+
+        &.mpp-user-data-form-group--has-value {
+            & input {
+                border: 1px solid #F0F0F0;
+                &:focus {
+                    border: 1px solid var(--primaryColor);
+                }
+                & ~ label {
+                    font-size: .5rem;
+                    transform: translateY(calc(-50% - 1.2em));
+                    left: 1.5em;
+                }
+            }
+        }
+    }
+
+
+
+
+</style>

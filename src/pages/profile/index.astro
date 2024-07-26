@@ -1,0 +1,42 @@
+---
+import ManagerSupport from "../../components/ManagerSupport.astro";
+import ProfileLayout from "../../layouts/ProfileLayout.astro";
+---
+
+<ProfileLayout>
+    <div>
+        <h1>Профиль</h1>
+        <div>
+            <img width="60" src="https://static.wow2print.com/storage/445/user/avatar//1813160560669533735171d0.95579800.jpg" alt="">
+            <div>
+                <h2>Михаил Мигалолв</h2>
+                <a href="tel:79651219907"></a>
+                <a href="btn">Редактировать данные</a>
+            </div>
+        </div>
+        <div>
+            <template id="template-user-password">
+                <h2>Сменить пароль</h2>
+                <form id="form-user-password" action="/profile/password" method="post">
+                    <input class="form-control" autocomplete="off" placeholder="Введите пароль" name="ProfilePasswordForm[password]" id="ProfilePasswordForm_password" type="password">
+                    <input class="form-control" autocomplete="off" placeholder="Подтвердите пароль" name="ProfilePasswordForm[cPassword]" id="ProfilePasswordForm_cPassword" type="password">
+                    <button type="submit">Сохранить</button>
+                </form>
+            </template>
+            <h2>Сменить пароль</h2>
+            <form id="user-password" action="/profile/password" method="post">
+                <input class="form-control" autocomplete="off" placeholder="Введите пароль" name="ProfilePasswordForm[password]" id="ProfilePasswordForm_password" type="password">
+                <input class="form-control" autocomplete="off" placeholder="Подтвердите пароль" name="ProfilePasswordForm[cPassword]" id="ProfilePasswordForm_cPassword" type="password">
+            </form>
+        </div>
+    </div>
+    <ManagerSupport />
+</ProfileLayout>
+
+<script>
+      if (document.location.pathname == "/profile") {
+        const mainContainer = document.querySelector(".personal-menu ~ .container");
+        const formUserPassword =  document.querySelector("#template-user-password").content.cloneNode(true);
+        mainContainer.appendChild(formUserPassword);
+      }
+</script>
