@@ -1,0 +1,158 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+    <div class="mpp-order">
+        <div class="mpp-order-head" style="background-color: rgb(255, 245, 203);">
+            <div class="mpp-order-left" style="background-color: bisque;">
+                <span>Заказ № 12143</span>
+                <span class="mpp-order-status-pay">Не оплачен</span>
+                <span class="mpp-order-status"><strong>Статус заказа:</strong> Новый</span>
+            </div>
+            <div class="mpp-order-right" style="background-color: rgb(148, 231, 155);">
+                <div class="mpp-order-dates">
+                    <p><strong>Дата оформления:</strong> 8 мая, 10:00</p>
+                    <p><strong>Дата доставки:</strong> 12 мая</p>
+                    <p>Самовывоз из шоурума в Москве. Готовность заказов после 16.00 ПВЗ (пункт выдачи заказов)</p>
+                </div>
+                <div class="mpp-orders-comment">
+                    <h3>Комментарий:</h3>
+                    <p>коллеги, напечатайте в этом заказе только обложку, пожалуйста! Блок будет на производстве.</p>
+                </div>
+            </div>
+        </div>
+        <ul class="mpp-order-albums">
+            <li class="mpp-order-album">
+                <div class="mpp-order-album-preview">
+                    <img width="176" height="176" src="https://myphotopages.ru/editor/project/previewItem?id=511309546&side=2&dpi=20&cache=1&.jpg" alt="">
+                    <div class="btn btn-save-as-template">Сохранить как шаблон для копирования</div>
+                </div>
+                <ul class="mpp-order-album-info">
+                    <li>Заказ: №18921</li>
+                    <li>Фотокнига в твердой фотообложке</li>
+                    <li>РОБЕРТ-нгобложка2-21ГОД_ОБЛОЖКА</li>
+                    <li><strong>Вес: </strong>656.00 г</li>
+                    <li><strong>Стоимость: </strong><span class="mpp-old-price">4 380.00</span><span class="mpp-current-price">00.00</span> ₽</li>
+                    <li><strong>Статус товара: </strong>Отправлен/Выдан</li>
+                </ul>
+            </li>
+        </ul>
+        
+    </div>
+</BaseLayout>
+
+
+
+<style lang="scss">
+    .mpp-order {
+        font-size: .875rem;
+        border: 1px solid var(--secondColor);
+        border-radius: 15px;
+        overflow: hidden;
+        & strong {
+            font-weight: 600;
+        }
+    }
+    :is(.mpp-order-album, .mpp-order-head) {
+        padding: 1rem;
+    }
+    .mpp-order {
+        container-type: inline-size;
+        container-name: head;
+    }
+
+
+    @container head (min-width: 600px) {
+        .mpp-order-head {
+            display: grid;
+            grid-template-columns: 3fr 5fr;
+        }
+    }
+
+
+
+    .mpp-order-left {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: .5em;
+    }
+    .mpp-order-status-pay {
+        padding: .5em;
+        background-color: aquamarine;
+        font-size: .75em;
+    }
+    .mpp-order-status {
+        width: 100%;
+    }
+    .mpp-order-right {
+        display: flex;
+        flex-direction: column;
+        gap: .3em;
+    }
+
+    @container head (min-width: 800px) {
+        .mpp-order-right {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+    }
+
+    .mpp-order-dates {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3em;
+        margin: .3em 0 0;
+    }
+    .mpp-order-album {
+        & img {
+            object-position: center;
+            object-fit: cover;
+        }
+    }
+    .mpp-orders-comment {
+        & h3 {
+            font-size: 1em;
+            font-weight: 600;
+            margin: 0 0 .3em;
+        }
+    }
+
+    :is(.mpp-order-albums, .mpp-order-album-info) {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mpp-order-album {
+        display: flex;
+        flex-direction: column;
+        gap: .5em;
+    }
+
+    .mpp-order-album-preview {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn-save-as-template {
+        background-color: var(--lavandaColor);
+        padding: .5em 1em;
+        font-size: .8em;
+        font-weight: 400;
+        border: 1px solid var(--lavandaColor);
+        color: var(--blackColor);
+    }
+
+    .mpp-order-album-info {
+        display: flex;
+        flex-direction: column;
+        gap: .4em;
+    }
+
+    
+</style>
